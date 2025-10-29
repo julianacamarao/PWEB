@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atividade 10 - IMC</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 32px auto; }
+    label { display:block; margin-top: 12px; }
+    input { padding: 8px; width: 100%; box-sizing: border-box; }
+    button { margin-top: 16px; padding: 10px 14px; cursor: pointer; }
+    #resultado { margin-top: 16px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+    small { color: #666; }
+  </style>
+  
+  <script src="imc.js" defer></script>
+</head>
+<body>
+  <h1>Calculadora de IMC</h1>
+
+  <label for="altura">Altura (em metros) <small>ex.: 1,65 ou 1.65</small></label>
+  <input id="altura" type="text" inputmode="decimal" placeholder="1,65" />
+
+  <label for="peso">Peso (em kg) <small>ex.: 60,5 ou 60.5</small></label>
+  <input id="peso" type="text" inputmode="decimal" placeholder="60,5" />
+
+  <button id="btn-calcular">Calcular IMC</button>
+
+  <div id="resultado">Preencha os dados e clique em Calcular.</div>
+</body>
+</html>
