@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atividade 12 - Parte 1 - Retângulo</title>
+</head>
+<body>
+  <h1>Atividade 12 - Retângulo</h1>
+  <button onclick="calcular()">Calcular área</button>
+
+  <script>
+    
+    function Retangulo(base, altura) {
+      this.base = base;
+      this.altura = altura;
+      this.calcularArea = function() {
+        return this.base * this.altura;
+      };
+    }
+
+    function calcular() {
+      const base = parseFloat(prompt("Digite a base:"));
+      const altura = parseFloat(prompt("Digite a altura:"));
+
+      const ret = new Retangulo(base, altura);
+      alert("Área do retângulo: " + ret.calcularArea());
+      console.log("Área do retângulo: " + ret.calcularArea());
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atividade 12 - Parte 2 - Contas</title>
+</head>
+<body>
+  <h1>Atividade 12 - Contas (herança)</h1>
+  <button onclick="criarContas()">Criar contas</button>
+
+  <pre id="saida"></pre>
+
+  <script>
+  
+    class Conta {
+      constructor(nomeCorrentista, banco, numeroConta, saldo) {
+        this._nomeCorrentista = nomeCorrentista;
+        this._banco = banco;
+        this._numeroConta = numeroConta;
+        this._saldo = saldo;
+      }
+
+      get nomeCorrentista() { return this._nomeCorrentista; }
+      set nomeCorrentista(v) { this._nomeCorrentista = v; }
+
+      get banco() { return this._banco; }
+      set banco(v) { this._banco = v; }
+
+      get numeroConta() { return this._numeroConta; }
+      set numeroConta(v) { this._numeroConta = v; }
+
+      get saldo() { return this._saldo; }
+      set saldo(v) { this._saldo = v; }
+    }
+
+    class Corrente extends Conta {
+      constructor(nomeCorrentista, banco, numeroConta, saldo, saldoEspecial) {
+        super(nomeCorrentista, banco, numeroConta, saldo);
+        this._saldoEspecial = saldoEspecial;
+      }
+
+      get saldoEspecial() { return this._saldoEspecial; }
+      set saldoEspecial(v) { this._saldoEspecial = v; }
+    }
+
+    class Poupanca extends Conta {
+      constructor(nomeCorrentista, banco, numeroConta, saldo, juros, dataVencimento) {
+        super(nomeCorrentista, banco, numeroConta, saldo);
+        this._juros = juros;
+        this._dataVencimento = dataVencimento;
+      }
+
+      get juros() { return this._juros; }
+      set juros(v) { this._juros = v; }
+
+      get dataVencimento() { return this._dataVencimento; }
+      set dataVencimento(v) { this._dataVencimento = v; }
+    }
+
+    function criarContas() {
+      const nome = prompt("Nome do correntista:");
+      const banco = prompt("Banco:");
+      const numeroConta = prompt("Número da conta:");
+      const saldo = parseFloat(prompt("Saldo:"));
+
+      const saldoEspecial = parseFloat(prompt("Saldo especial da CONTA CORRENTE:"));
+      const juros = parseFloat(prompt("Juros da POUPANÇA (%):"));
+      const dataVencimento = prompt("Data de vencimento da POUPANÇA:");
+
+      const contaCorrente = new Corrente(nome, banco, numeroConta, saldo, saldoEspecial);
+      const contaPoupanca = new Poupanca(nome, banco, numeroConta, saldo, juros, dataVencimento);
+
+      const saida = document.getElementById("saida");
+      saida.textContent =
+        "=== Conta Corrente ===\n" +
+        "Nome: " + contaCorrente.nomeCorrentista + "\n" +
+        "Banco: " + contaCorrente.banco + "\n" +
+        "Número: " + contaCorrente.numeroConta + "\n" +
+        "Saldo: " + contaCorrente.saldo + "\n" +
+        "Saldo Especial: " + contaCorrente.saldoEspecial + "\n\n" +
+
+        "=== Conta Poupança ===\n" +
+        "Nome: " + contaPoupanca.nomeCorrentista + "\n" +
+        "Banco: " + contaPoupanca.banco + "\n" +
+        "Número: " + contaPoupanca.numeroConta + "\n" +
+        "Saldo: " + contaPoupanca.saldo + "\n" +
+        "Juros: " + contaPoupanca.juros + "%\n" +
+        "Data de Vencimento: " + contaPoupanca.dataVencimento + "\n";
+    }
+  </script>
+</body>
+</html>
