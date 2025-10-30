@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Como Criar Objetos</title>
+</head>
+<body>
+    <script>
+        var aluno1 = new Object();
+        aluno1.ra = "00001234";
+        aluno1.nome = "Matheus";
+        alert(`Ra = ${aluno1.ra} \nNome =  ${aluno1.nome}`);
+
+               
+        var aluno2 = {};
+        aluno2.ra = "1234";
+        aluno2["nome"] = "Paulo";
+        alert("Ra = " + aluno2.ra + 
+              "\nNome = " + aluno2.nome);
+
+
+        aluno2["email do aluno"] = "paulo@gmail.com";
+        alert(aluno2["email do aluno"]);
+
+        
+        var aluno3 = {
+            ra: "1234567",
+            nome: "Arthur"
+        };
+        alert("Ra = " + aluno3.ra +
+              "\nNome = " + aluno3.nome);
+
+        function Aluno(ra,nome){
+            this.ra=ra;
+            this.nome=nome;
+            this.mostraDados=function(){
+                return "Ra = " + this.ra + "\nNome = "+ this.nome;
+            }
+        }
+        var aluno4 = new Aluno("123","Vinicius");
+
+        function Aluno2(){
+            var ra; // "encapsulado-escondido"
+            var nome;
+            this.setRa = function(value){
+                this.ra = value;
+            }
+            this.getRa = function(){
+                return this.ra;
+            }
+            this.setNome = function(value){
+                this.nome = value;
+            }
+            this.getNome = function(){
+                return this.nome;
+            }
+        }
+
+        var aluno5 = new Aluno2();
+        aluno5.setNome("Luis");
+        aluno5.setRa("234");
+        alert("RA = "+ aluno5.getRa()+
+              "\nNome = "+ aluno5.getNome());
+
+        function AlunoADS(){
+            var numLab;
+            this.setnumLab = function(value){
+                this.numLab = value;
+            }
+            this.getnumLab = function(){
+                return this.numLab;
+            }
+        }
+
+        // Herança
+        AlunoADS.prototype = new Aluno2();
+        var aluno6 = new AlunoADS();
+        aluno6.setNome("Raissa");
+        aluno6.setRa("123");
+        aluno6.setnumLab(5);
+        alert("Nome = " + aluno6.getNome() +
+              "\nLab : " + aluno6.getnumLab());
+
+        class Aluno1{
+            constructor() {
+                this._ra;
+                this._nome;
+            }
+            setNome(value) {
+                this._nome = value;
+            }
+            getNome() {
+                return this._nome;
+            }
+            setRa(value) {
+                this._ra = value;
+            }
+            getRa() {
+                return this._ra;
+            }
+        }
+        var objAluno = new Aluno1();
+        objAluno.setNome("William");
+        objAluno.setRa("123");
+
+        alert(`Nome = ${objAluno.getNome()} \nRa =  ${objAluno.getRa()}`);
+
+
+        //herança
+        class AlunoADS1 extends Aluno1{
+            constructor(){
+                super();
+                this._numLab;
+            }
+            setnumLab(value){
+                this._numLab = value;
+            }
+            getnumLab(){
+                return this._numLab;
+            }
+        }
+
+        var objAlunoADS = new AlunoADS1();
+        objAlunoADS.setNome("Alicia");
+        objAlunoADS.setRa("123");
+        objAlunoADS.setnumLab(5);
+        alert(`Nome = ${objAlunoADS.getNome()} \nRa = ${objAlunoADS.getRa()} \nLab = ${objAlunoADS.getnumLab()}`);
+
+
+    </script>
+</body>
+</html>
