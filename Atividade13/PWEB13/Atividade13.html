@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 13 - Eventos</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #eef5f9;
+      padding-top: 40px;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      border: 3px solid #ccc;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    h1 {
+      color: #004c91;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Abra a Janela</h1>
+  <img 
+    id="janela" 
+    src="janela_fechada.jpg" 
+    alt="Janela Fechada"
+    onmouseover="abrirJanela()"
+    onmouseout="fecharJanela()"
+    onclick="quebrarJanela()"
+  >
+
+  <script>
+    
+    function abrirJanela() {
+      const img = document.getElementById("janela");
+      const titulo = document.getElementById("titulo");
+      img.src = "janela_aberta.jpg";
+      titulo.textContent = "Janela Aberta";
+    }
+
+    function fecharJanela() {
+      const img = document.getElementById("janela");
+      const titulo = document.getElementById("titulo");
+      img.src = "janela_fechada.jpg";
+      titulo.textContent = "Janela Fechada";
+    }
+
+    function quebrarJanela() {
+      const img = document.getElementById("janela");
+      const titulo = document.getElementById("titulo");
+      img.src = "janela_quebrada.jpg";
+      titulo.textContent = "Janela Quebrada 💥";
+    }
+  </script>
+</body>
+</html>
